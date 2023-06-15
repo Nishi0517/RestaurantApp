@@ -1,0 +1,20 @@
+
+
+backend---
+
+
+
+Microsoft.AspNetCore.Cors 2.2.0
+Microsoft.EntityFrameworkCore 7.0.5
+Microsoft.EntityFrameworkCore.Design 7.0.5
+Microsoft.EntityFrameworkCore.SqlServer 7.0.5
+Microsoft.EntityFrameworkCore.Tools 7.0.5
+
+
+--front end
+
+
+npm i @material-ui/lab --force
+npm i axios --force
+npm i @material-ui/core --force
+npm i @material-ui/icons --force
