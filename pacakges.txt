@@ -1,4 +1,20 @@
 
+react + core api project
+
+perfectly working
+high level project - react with hook
+
+
+database- RestaurantDB
+
+code first approach-
+
+add-migration 'initial'
+update-database
+
+"ConnectionStrings": {
+    "ResDbCon": "server=ATI-1;database=RestaurantDB;Integrated Security=True; MultipleActiveResultSets=true; TrustServerCertificate=True;"
+  }
 
 backend---
 

@@ -1,0 +1,169 @@
+USE [RestaurantDB]
+GO
+/****** Object:  Table [dbo].[Customers]    Script Date: 19-06-2023 15:51:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Customers](
+	[CustomerId] [int] IDENTITY(1,1) NOT NULL,
+	[CustomerName] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED 
+(
+	[CustomerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[FoodItems]    Script Date: 19-06-2023 15:51:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[FoodItems](
+	[FoodItemId] [int] IDENTITY(1,1) NOT NULL,
+	[FoodItemName] [nvarchar](100) NOT NULL,
+	[Price] [decimal](18, 2) NOT NULL,
+ CONSTRAINT [PK_FoodItems] PRIMARY KEY CLUSTERED 
+(
+	[FoodItemId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[OrderDetails]    Script Date: 19-06-2023 15:51:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OrderDetails](
+	[OrderDetailId] [bigint] IDENTITY(1,1) NOT NULL,
+	[OrderMasterId] [bigint] NOT NULL,
+	[FoodItemId] [int] NOT NULL,
+	[FoodItemPrice] [decimal](18, 2) NOT NULL,
+	[Quantity] [int] NOT NULL,
+ CONSTRAINT [PK_OrderDetails] PRIMARY KEY CLUSTERED 
+(
+	[OrderDetailId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[OrderMasters]    Script Date: 19-06-2023 15:51:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OrderMasters](
+	[OrderMasterId] [bigint] IDENTITY(1,1) NOT NULL,
+	[OrderNumber] [nvarchar](75) NOT NULL,
+	[CustomerId] [int] NOT NULL,
+	[pMethod] [nvarchar](10) NOT NULL,
+	[gTotal] [decimal](18, 2) NOT NULL,
+ CONSTRAINT [PK_OrderMasters] PRIMARY KEY CLUSTERED 
+(
+	[OrderMasterId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Customers] ON 
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustomerName]) VALUES (1, N'abc')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustomerName]) VALUES (2, N'abcd')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustomerName]) VALUES (3, N'xyz')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustomerName]) VALUES (4, N'mno')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustomerName]) VALUES (5, N'def')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustomerName]) VALUES (6, N'spo')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustomerName]) VALUES (7, N'string')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustomerName]) VALUES (8, N'string')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustomerName]) VALUES (9, N'string')
+GO
+SET IDENTITY_INSERT [dbo].[Customers] OFF
+GO
+SET IDENTITY_INSERT [dbo].[FoodItems] ON 
+GO
+INSERT [dbo].[FoodItems] ([FoodItemId], [FoodItemName], [Price]) VALUES (1, N'Chiense', CAST(3.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[FoodItems] ([FoodItemId], [FoodItemName], [Price]) VALUES (2, N'Pavbhaji', CAST(13.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[FoodItems] ([FoodItemId], [FoodItemName], [Price]) VALUES (3, N'Dhosa', CAST(10.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[FoodItems] ([FoodItemId], [FoodItemName], [Price]) VALUES (4, N'Pizza', CAST(8.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[FoodItems] ([FoodItemId], [FoodItemName], [Price]) VALUES (5, N'Frenky', CAST(2.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[FoodItems] ([FoodItemId], [FoodItemName], [Price]) VALUES (6, N'Fries', CAST(3.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[FoodItems] ([FoodItemId], [FoodItemName], [Price]) VALUES (7, N'Cold-drinks', CAST(9.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[FoodItems] ([FoodItemId], [FoodItemName], [Price]) VALUES (8, N'Burger', CAST(5.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[FoodItems] ([FoodItemId], [FoodItemName], [Price]) VALUES (9, N'Garlic bread', CAST(4.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[FoodItems] ([FoodItemId], [FoodItemName], [Price]) VALUES (10, N'Pasta', CAST(7.50 AS Decimal(18, 2)))
+GO
+SET IDENTITY_INSERT [dbo].[FoodItems] OFF
+GO
+SET IDENTITY_INSERT [dbo].[OrderDetails] ON 
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailId], [OrderMasterId], [FoodItemId], [FoodItemPrice], [Quantity]) VALUES (2, 20, 1, CAST(3.50 AS Decimal(18, 2)), 2)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailId], [OrderMasterId], [FoodItemId], [FoodItemPrice], [Quantity]) VALUES (4, 22, 3, CAST(10.50 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailId], [OrderMasterId], [FoodItemId], [FoodItemPrice], [Quantity]) VALUES (5, 23, 2, CAST(13.50 AS Decimal(18, 2)), 2)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailId], [OrderMasterId], [FoodItemId], [FoodItemPrice], [Quantity]) VALUES (6, 23, 4, CAST(8.50 AS Decimal(18, 2)), 2)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailId], [OrderMasterId], [FoodItemId], [FoodItemPrice], [Quantity]) VALUES (7, 23, 6, CAST(3.50 AS Decimal(18, 2)), 2)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailId], [OrderMasterId], [FoodItemId], [FoodItemPrice], [Quantity]) VALUES (8, 22, 4, CAST(8.50 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailId], [OrderMasterId], [FoodItemId], [FoodItemPrice], [Quantity]) VALUES (9, 24, 1, CAST(3.50 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailId], [OrderMasterId], [FoodItemId], [FoodItemPrice], [Quantity]) VALUES (10, 21, 3, CAST(10.50 AS Decimal(18, 2)), 3)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailId], [OrderMasterId], [FoodItemId], [FoodItemPrice], [Quantity]) VALUES (11, 21, 4, CAST(8.50 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailId], [OrderMasterId], [FoodItemId], [FoodItemPrice], [Quantity]) VALUES (13, 25, 3, CAST(10.50 AS Decimal(18, 2)), 3)
+GO
+SET IDENTITY_INSERT [dbo].[OrderDetails] OFF
+GO
+SET IDENTITY_INSERT [dbo].[OrderMasters] ON 
+GO
+INSERT [dbo].[OrderMasters] ([OrderMasterId], [OrderNumber], [CustomerId], [pMethod], [gTotal]) VALUES (20, N'624620', 9, N'Card', CAST(7.00 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[OrderMasters] ([OrderMasterId], [OrderNumber], [CustomerId], [pMethod], [gTotal]) VALUES (21, N'555555', 3, N'Cash', CAST(40.00 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[OrderMasters] ([OrderMasterId], [OrderNumber], [CustomerId], [pMethod], [gTotal]) VALUES (22, N'203398', 5, N'Cash', CAST(19.00 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[OrderMasters] ([OrderMasterId], [OrderNumber], [CustomerId], [pMethod], [gTotal]) VALUES (23, N'295389', 6, N'Card', CAST(47.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[OrderMasters] ([OrderMasterId], [OrderNumber], [CustomerId], [pMethod], [gTotal]) VALUES (24, N'591994', 2, N'Cash', CAST(3.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[OrderMasters] ([OrderMasterId], [OrderNumber], [CustomerId], [pMethod], [gTotal]) VALUES (25, N'165652', 1, N'Cash', CAST(31.50 AS Decimal(18, 2)))
+GO
+SET IDENTITY_INSERT [dbo].[OrderMasters] OFF
+GO
+ALTER TABLE [dbo].[OrderDetails]  WITH CHECK ADD  CONSTRAINT [FK_OrderDetails_FoodItems_FoodItemId] FOREIGN KEY([FoodItemId])
+REFERENCES [dbo].[FoodItems] ([FoodItemId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[OrderDetails] CHECK CONSTRAINT [FK_OrderDetails_FoodItems_FoodItemId]
+GO
+ALTER TABLE [dbo].[OrderDetails]  WITH CHECK ADD  CONSTRAINT [FK_OrderDetails_OrderMasters_OrderMasterId] FOREIGN KEY([OrderMasterId])
+REFERENCES [dbo].[OrderMasters] ([OrderMasterId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[OrderDetails] CHECK CONSTRAINT [FK_OrderDetails_OrderMasters_OrderMasterId]
+GO
+ALTER TABLE [dbo].[OrderMasters]  WITH CHECK ADD  CONSTRAINT [FK_OrderMasters_Customers_CustomerId] FOREIGN KEY([CustomerId])
+REFERENCES [dbo].[Customers] ([CustomerId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[OrderMasters] CHECK CONSTRAINT [FK_OrderMasters_Customers_CustomerId]
+GO
